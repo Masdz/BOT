@@ -42,12 +42,13 @@ public class main extends AppCompatActivity {
                 cordenadas.setId(Integer.parseInt(setID.getText()+""));
             }
         });
-        ActualizarUbicacion();
+        //ActualizarUbicacion();
+        Localizacion local=new Localizacion(contexto,cordenadas,conectar,mos);
         Button b=(Button)findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActualizarUbicacion();
+                //ActualizarUbicacion();
             }
         });
     }
@@ -79,7 +80,7 @@ public class main extends AppCompatActivity {
             }
             mos.setText("Obteniendo ubicacion");
             locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 1000, 0, locationListenerGPS);
+                    LocationManager.NETWORK_PROVIDER, 1000, 0, locationListenerGPS);
         }
     }
     private final LocationListener locationListenerGPS = new LocationListener() {
