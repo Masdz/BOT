@@ -5,17 +5,24 @@ package proyecto.bus.bot;
  */
 
 public class Cordenadas {
-    int id;
-    double latitud;
-    double longitud;
+    private int id;
+    private double latitud;
+    private double longitud;
+    private double velocidad;
 
-    public Cordenadas(int id, double latitud, double longitud) {
+    public Cordenadas(int id, double latitud, double longitud,double vel) {
         this.id = id;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.velocidad=vel;
+
     }
 
     public Cordenadas() {
+        this.id=0;
+        this.latitud = 0;
+        this.longitud = 0;
+        this.velocidad=0;
     }
 
     public Cordenadas(int id) {
@@ -44,5 +51,20 @@ public class Cordenadas {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public double getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(double vel) {
+        this.velocidad = vel;
+    }
+
+    public String desp(){
+        return "ID: "+id+"\n" +
+                "Latitud: "+latitud+"\n" +
+                "Longitud: "+longitud+"\n" +
+                "Velocidad: "+velocidad;
     }
 }
