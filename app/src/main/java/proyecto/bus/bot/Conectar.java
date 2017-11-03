@@ -30,35 +30,28 @@ public class Conectar {
         return queue;
     }
 
-    public void post(Cordenadas param, String port){
+    public void post(Map<String,String> param, String port){
         final String portf=port;
-        final Cordenadas paramf=param;
+        final Map<String,String> paramf=param;
         try {
             StringRequest postrequest = new StringRequest(Request.Method.POST, url+port,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Log.d("Respuesta ",response);
-                            //Toast.makeText(contexto,response, Toast.LENGTH_LONG).show();
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             if(error!=null) {
-                                //Log.d("Error", error.getCause().getMessage());
-                                //Toast.makeText(contexto, "Idefinido ", Toast.LENGTH_LONG).show();
+                                Log.d("Error", "Error al conectar con el servidor");
                             }
                         }
                      }
              ) {
                 @Override
                 public Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("id", paramf.getId() + "");
-                    params.put("latitud", paramf.getLatitud() + "");
-                    params.put("longitud", paramf.getLongitud() + "");
-                    params.put("velocidad", paramf.getVelocidad() + "");
-                    return params;
+                    return paramf;
                 }
             };
             queue.add(postrequest);
@@ -66,5 +59,20 @@ public class Conectar {
             Toast.makeText(contexto,"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
         }
 }
+
+    public void enviarCordenadas(Cordenadas cor){
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id", cor.getId() + "");
+        params.put("latitud", cor.getLatitud() + "");
+        params.put("longitud", cor.getLongitud() + "");
+        params.put("velocidad", cor.getVelocidad() + "");
+        post(params, ":3000/ENVIARCORDENADAS");
+    }
+
+    public void EliminarCordenadas(int id){
+         Map<String,String> params=new HashMap<String, String>();
+        params.put("id", id + "");
+        post(params,":3000/ELIMINARCORDENADAS");
+    }
 
 }
