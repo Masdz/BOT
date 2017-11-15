@@ -42,7 +42,7 @@ public class main extends AppCompatActivity implements GoogleApiClient.Connectio
         setContentView(R.layout.activity_main);
         contexto = this;
         //Conectar conectar=new Conectar(this,"http://localhost");192.168.1.87
-        conectar = new Conectar(this, "http://192.168.137.1");
+        conectar = new Conectar(this, "http://busontime.herokuapp.com");
         cordenadas = new Cordenadas();
         mos = (TextView) findViewById(R.id.mos);
         setID = (EditText) findViewById(R.id.tfid);
