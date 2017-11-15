@@ -68,7 +68,8 @@ public class main extends AppCompatActivity implements GoogleApiClient.Connectio
 
 
     @Override
-    protected void onStart() {
+    protected void onStart() {//ok ughvhgvhgvhj
+        //ghcngcvnbcnbc
         super.onStart();
         if (mgapiClient != null) {
             if (mgapiClient.isConnected()) {
