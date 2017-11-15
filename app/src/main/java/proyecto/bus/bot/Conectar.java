@@ -66,13 +66,13 @@ public class Conectar {
         params.put("latitud", cor.getLatitud() + "");
         params.put("longitud", cor.getLongitud() + "");
         params.put("velocidad", cor.getVelocidad() + "");
-        post(params, ":3000/ENVIARCORDENADAS");
+        post(params, "/ENVIARCORDENADAS");
     }
 
     public void EliminarCordenadas(int id){
          Map<String,String> params=new HashMap<String, String>();
         params.put("id", id + "");
-        post(params,":3000/ELIMINARCORDENADAS");
+        post(params,"/ELIMINARCORDENADAS");
     }
 
 }
